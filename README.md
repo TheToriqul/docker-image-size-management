@@ -20,22 +20,14 @@ This project demonstrates advanced Docker image management techniques, focusing 
 - Gain hands-on experience with container modification and image versioning
 
 ## 🏗️ Project Architecture
+The architecture follows a layered approach where we start with a base Ubuntu image, create a container to add Git which forms our first image layer (v1.0), then create another container to remove Git which forms our second image layer (v2.0). This demonstrates Docker's Union File System (UFS) behavior, where each layer represents a filesystem change, even though removing Git doesn't reduce the final image size due to how Docker maintains layer history.
 
-```mermaid
-graph TB
-    subgraph Docker_Image_Architecture
-        A(("ubuntu:latest"))-->B["Container"]
-        B-->|"install git"|C["Container + Git"]
-        C-->|"commit"|D[("ubuntu-git:1.0")]
-        D-->|"create"|E["Container"]
-        E-->|"remove git"|F["Container - Git"]
-        F-->|"commit"|G[("ubuntu-git:2.0")]
-        
-        style A fill:#e0e0e0,stroke:#333
-        style D fill:#bbf,stroke:#333
-        style G fill:#bbf,stroke:#333
-    end
-```
+<figure >
+  <p align="center">
+      <img src="./architecture.png" alt="project architecture" />
+      <p align="center">Project Architecture</p> 
+  </p>
+</figure>
 
 ## 💻 Technical Stack
 
