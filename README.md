@@ -22,13 +22,19 @@ This project demonstrates advanced Docker image management techniques, focusing 
 ## 🏗️ Project Architecture
 
 ```mermaid
-graph TD
-  subgraph Architecture
-    A[Base Ubuntu Image] --> B[Container with Git]
-    B --> C[Image v1.0]
-    C --> D[Container without Git]
-    D --> E[Image v2.0]
-  end
+graph TB
+    subgraph Docker_Image_Architecture
+        A(("ubuntu:latest"))-->B["Container"]
+        B-->|"install git"|C["Container + Git"]
+        C-->|"commit"|D[("ubuntu-git:1.0")]
+        D-->|"create"|E["Container"]
+        E-->|"remove git"|F["Container - Git"]
+        F-->|"commit"|G[("ubuntu-git:2.0")]
+        
+        style A fill:#e0e0e0,stroke:#333
+        style D fill:#bbf,stroke:#333
+        style G fill:#bbf,stroke:#333
+    end
 ```
 
 ## 💻 Technical Stack
