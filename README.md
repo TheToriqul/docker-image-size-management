@@ -22,7 +22,7 @@ This project demonstrates advanced Docker image management techniques, focusing 
 ## 🏗️ Project Architecture
 
 ```mermaid
-graph LR
+graph TD
   subgraph Architecture
     A[Base Ubuntu Image] --> B[Container with Git]
     B --> C[Image v1.0]
